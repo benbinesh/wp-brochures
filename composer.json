@@ -3,6 +3,7 @@
   "description": "Setup a new WordPress installation via Composer.",
   "license": "GPL-2.0+",
   "type": "project",
+  "minimum-stability": "dev",
   "keywords": [
     "WordPress",
     "skeleton",
