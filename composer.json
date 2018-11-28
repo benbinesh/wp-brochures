@@ -1,0 +1,64 @@
+{
+  "name": "benbinesh/wp-brochures",
+  "description": "Setup a new WordPress installation via Composer.",
+  "license": "GPL-2.0+",
+  "type": "project",
+  "keywords": [
+    "WordPress",
+    "skeleton",
+    "CMS",
+    "blog",
+    "composer",
+    "wpackagist"
+  ],
+  "authors": [
+    {
+      "name": "ITH WP Team",
+      "email": "micah@wpscholar.com",
+      "homepage": "http://wpscholar.com",
+      "role": "Developer"
+    }
+  ],
+  "support": {
+    "source": "https://github.com/benbinesh/wp-brochures",
+    "issues": "https://github.com/benbinesh/wp-brochures/issues"
+  },
+  "repositories": {
+    "wpackagist": {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  },
+  "require": {
+    "johnpbloch/wordpress": "@stable",
+    "composer/installers": "@stable",
+    "vlucas/phpdotenv": "^2.2",
+    "wpackagist-plugin/wordpress-seo":">=7.0.2",
+    "wpackagist-plugin/w3-total-cache":">=dev-trubk"
+  },
+  "suggest": {
+    "wp-cli/wp-cli": "@stable"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp",
+    "installer-paths": {
+      "content/mu-plugins/{$name}": [
+        "type:wordpress-muplugin"
+      ],
+      "content/plugins/{$name}": [
+        "type:wordpress-plugin"
+      ],
+      "content/themes/{$name}": [
+        "type:wordpress-theme"
+      ]
+    }
+  },
+  "scripts": {
+    "generate-salts": [
+      "echo '<?php' > salt.php && curl -L https://api.wordpress.org/secret-key/1.1/salt/ >> salt.php"
+    ],
+    "post-create-project-cmd": [
+      "composer run generate-salts"
+    ]
+  }
+}
